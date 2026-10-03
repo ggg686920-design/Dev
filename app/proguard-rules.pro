@@ -17,9 +17,8 @@
 -keep public class * extends androidx.lifecycle.ViewModel
 
 # ── Jetpack Compose ───────────────────────────────────────────────
--keep class androidx.compose.** { *; }
--keepnames class kotlinx.coroutines.internal.* { *; }
 -dontwarn androidx.compose.**
+-keepnames class kotlinx.coroutines.internal.* { *; }
 
 # ── kotlinx.serialization ─────────────────────────────────────────
 -keepattributes *Annotation*, InnerClasses, EnclosingMethod
