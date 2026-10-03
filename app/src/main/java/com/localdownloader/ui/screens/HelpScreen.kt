@@ -659,7 +659,7 @@ private fun getHelpTopics(): List<HelpTopic> = listOf(
         icon = Icons.Outlined.RocketLaunch,
         title = "How to Download Videos & Audio",
         summary = "Paste links from YouTube, Instagram, TikTok, Reddit, X (Twitter), Facebook, and 1000+ sites.",
-        body = "1. Copy the video or playlist link from any app or browser.\n2. Open Local Downloader and paste the URL into the search box on the Home tab.\n3. Tap 'Analyze'. You will see available resolutions (4K, 1080p, 720p, etc.) and audio streams.\n4. Select your preferred format, subtitle languages, or audio tracks, and tap 'Start Download'.\n\nYou can also share links directly to Local Downloader using Android's system Share Sheet without manually copying links!",
+        body = "1. Copy the video or playlist link from any app or browser.\n2. Open Downloader links and paste the URL into the search box on the Home tab.\n3. Tap 'Analyze'. You will see available resolutions (4K, 1080p, 720p, etc.) and audio streams.\n4. Select your preferred format, subtitle languages, or audio tracks, and tap 'Start Download'.\n\nYou can also share links directly to Downloader links using Android's system Share Sheet without manually copying links!",
         tips = listOf(
             "Use Quick Download presets in Settings for one-tap default quality downloading.",
             "You can analyze full playlists and download specific tracks or the entire collection.",
@@ -709,7 +709,7 @@ private fun getHelpTopics(): List<HelpTopic> = listOf(
         icon = Icons.Outlined.ClosedCaption,
         title = "Subtitles, Multi-Dub Audio & Captions",
         summary = "Native subtitles, embedded captions, custom styling, and secondary language audio tracks.",
-        body = "Local Downloader automatically discovers creator-uploaded native subtitles as well as auto-generated captions.\n\n• Automatic Filtering: Automatically excludes thousands of machine auto-translations on videos with huge caption lists to keep the picker fast and clean.\n• Subtitle Embedding: Turn on 'Auto Embed Subtitles' in Settings -> Subtitles to embed subtitles directly into MP4/MKV video containers.\n• Player Styling: Customize subtitle font size, color, background transparency, and screen position right inside the built-in video player.",
+        body = "Downloader links automatically discovers creator-uploaded native subtitles as well as auto-generated captions.\n\n• Automatic Filtering: Automatically excludes thousands of machine auto-translations on videos with huge caption lists to keep the picker fast and clean.\n• Subtitle Embedding: Turn on 'Auto Embed Subtitles' in Settings -> Subtitles to embed subtitles directly into MP4/MKV video containers.\n• Player Styling: Customize subtitle font size, color, background transparency, and screen position right inside the built-in video player.",
         tips = listOf(
             "If you download MKV, you can embed multiple subtitle tracks and switch between them during playback.",
             "Dual audio tracks allow you to download native and dubbed voices simultaneously.",
@@ -735,7 +735,7 @@ private fun getHelpTopics(): List<HelpTopic> = listOf(
         icon = Icons.Outlined.Security,
         title = "Fixing YouTube 'Sign in' & Bot Checks",
         summary = "Solve 'Sign in to confirm you’re not a bot', PoToken generator, and YouTube OAuth.",
-        body = "YouTube frequently triggers automated verification or bot-detection barriers on mobile networks.\n\n• PoToken Generator: Open Settings -> YouTube Access. Local Downloader features an integrated Proof-of-Origin token generator that authenticates requests seamlessly.\n• YouTube OAuth: Sign in with your Google account via OAuth Device Code to download age-restricted, members-only, or private playlist videos.\n• Custom User-Agents: Enable randomized or modern browser user-agents in Settings to bypass anti-scraping blocks.",
+        body = "YouTube frequently triggers automated verification or bot-detection barriers on mobile networks.\n\n• PoToken Generator: Open Settings -> YouTube Access. Downloader links features an integrated Proof-of-Origin token generator that authenticates requests seamlessly.\n• YouTube OAuth: Sign in with your Google account via OAuth Device Code to download age-restricted, members-only, or private playlist videos.\n• Custom User-Agents: Enable randomized or modern browser user-agents in Settings to bypass anti-scraping blocks.",
         tips = listOf(
             "If YouTube downloads stall with 403 Forbidden, regenerate your PoToken or refresh cookies.",
             "OAuth tokens are stored securely in local encrypted preferences and never leave your device.",
@@ -761,7 +761,7 @@ private fun getHelpTopics(): List<HelpTopic> = listOf(
         icon = Icons.Outlined.BatteryChargingFull,
         title = "Background Downloads & Battery Saver",
         summary = "Keep downloads running smoothly with screen locked or configure power constraints.",
-        body = "Local Downloader utilizes robust Android Foreground Services and WorkManager to keep large downloads active when you switch apps or turn off your screen.\n\n• Battery Optimization: On some OEMs (Xiaomi/MIUI, Samsung OneUI, Huawei), exclude Local Downloader from aggressive battery killers in device Settings -> Battery -> Unrestricted.\n• Charging Constraint: Enable 'Download only while charging' in Battery settings if downloading huge batches.\n• Low Battery Pause: Automatically pause downloads when battery dips below 15%.",
+        body = "Downloader links utilizes robust Android Foreground Services and WorkManager to keep large downloads active when you switch apps or turn off your screen.\n\n• Battery Optimization: On some OEMs (Xiaomi/MIUI, Samsung OneUI, Huawei), exclude Downloader links from aggressive battery killers in device Settings -> Battery -> Unrestricted.\n• Charging Constraint: Enable 'Download only while charging' in Battery settings if downloading huge batches.\n• Low Battery Pause: Automatically pause downloads when battery dips below 15%.",
         tips = listOf(
             "Turn on 'Allow metered downloads' if you want to download over mobile data cellular plans.",
             "Set concurrent fragments to 4 or 8 in Settings for faster multi-connection download speeds.",
@@ -774,7 +774,7 @@ private fun getHelpTopics(): List<HelpTopic> = listOf(
         icon = Icons.Outlined.SdCard,
         title = "Custom Storage Folders & SD Card Support",
         summary = "Choose where downloads are saved or store files directly on an external SD card.",
-        body = "By default, files are saved in `Download/LocalDownloader` with dedicated subfolders for Videos, Audio, and Files.\n\n• Changing Root Folder: Go to Settings -> Storage -> Root folder to select any device directory or SD card folder using Android Storage Access Framework (SAF).\n• Automatic Subfolder Sorting: Keep your library tidy by automatically routing MP3s to Audio and MP4s to Videos.",
+        body = "By default, files are saved in `Download/DownloaderLinks` with dedicated subfolders for Videos, Audio, and Files.\n\n• Changing Root Folder: Go to Settings -> Storage -> Root folder to select any device directory or SD card folder using Android Storage Access Framework (SAF).\n• Automatic Subfolder Sorting: Keep your library tidy by automatically routing MP3s to Audio and MP4s to Videos.",
         tips = listOf(
             "If saving to an external SD card, grant write permissions when prompted by the system folder picker.",
         ),
@@ -786,7 +786,7 @@ private fun getHelpTopics(): List<HelpTopic> = listOf(
         icon = Icons.Outlined.MusicNote,
         title = "Built-in Player, Music Mode & Converter",
         summary = "Background music player, video compressor, and audio trimmer tools.",
-        body = "Local Downloader is a complete media workstation:\n\n• Music Player: Seamless background audio playback with lockscreen notification controls, sleep timer, repeat/shuffle, and favorites playlist.\n• Video Compressor: Reduce huge 4K/1080p video file sizes using efficient H.265/HEVC or H.264 codecs.\n• Format Converter: Extract MP3, M4A, FLAC, or Opus audio from downloaded videos instantly.",
+        body = "Downloader links is a complete media workstation:\n\n• Music Player: Seamless background audio playback with lockscreen notification controls, sleep timer, repeat/shuffle, and favorites playlist.\n• Video Compressor: Reduce huge 4K/1080p video file sizes using efficient H.265/HEVC or H.264 codecs.\n• Format Converter: Extract MP3, M4A, FLAC, or Opus audio from downloaded videos instantly.",
         tips = listOf(
             "Use the Video Player swipe gestures: left side swipes adjust brightness, right side adjusts volume, and horizontal swipe seeks.",
             "Picture-in-Picture (PiP) is supported natively during video playback.",

@@ -633,7 +633,7 @@
     <string name="help_report_issue_subtitle">रिपोर्टिंग मार्गदर्शन के साथ GitHub issue form खोलें।</string>
     <string name="cookies_actions">कुकी क्रियाएँ</string>
     <string name="cookies_delete_all">सभी कुकीज़ मिटाएँ</string>
-    <string name="cookies_delete_all_body">यह Video Downloader से सहेजी गई हर कुकी एंट्री हटा देता है।</string>
+    <string name="cookies_delete_all_body">यह Downloader links से सहेजी गई हर कुकी एंट्री हटा देता है।</string>
     <string name="cookies_import_clipboard">क्लिपबोर्ड से इंपोर्ट करें</string>
     <string name="cookies_export_clipboard">क्लिपबोर्ड में एक्सपोर्ट करें</string>
     <string name="cookies_export_file">फ़ाइल एक्सपोर्ट करें</string>
@@ -654,7 +654,7 @@
     <string name="cookies_editor_paste">पेस्ट</string>
     <string name="cookies_editor_get">कुकीज़ लें</string>
     <string name="cookies_editor_url_hint">उस साइट का URL पेस्ट करें जिससे ये कुकीज़ जुड़ी हैं।</string>
-    <string name="cookies_editor_keep_one">हर वेबसाइट के लिए एक कुकी प्रोफ़ाइल रखें ताकि Video Downloader उसे अपने आप दोबारा उपयोग कर सके।</string>
+    <string name="cookies_editor_keep_one">हर वेबसाइट के लिए एक कुकी प्रोफ़ाइल रखें ताकि Downloader links उसे अपने आप दोबारा उपयोग कर सके।</string>
     <string name="youtube_access_use_saved_body">कठिन डाउनलोड में आपके YouTube कुकीज़, PO टोकन और data-sync session hints लागू करता है।</string>
     <string name="youtube_access_ready_title">लंबे रिट्राई के लिए तैयार</string>
     <string name="youtube_access_not_ready_title">अभी तक सेट नहीं है</string>

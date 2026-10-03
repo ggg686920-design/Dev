@@ -44,6 +44,11 @@ data class DownloadOptions(
     val playlistItemIndex: Int? = null,
     val playlistFolderName: String? = null,
     val concurrentFragments: Int = 4,
+    val speedLimitKbps: Int? = null,
+    val segmentStartTime: String? = null,
+    val segmentEndTime: String? = null,
+    val scheduledEpochMs: Long? = null,
+    val overwriteExisting: Boolean = false,
 )
 
 /**

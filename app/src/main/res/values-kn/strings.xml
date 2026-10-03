@@ -372,7 +372,7 @@
     <string name="cookies_title">ಕುಕೀಸ್</string>
     <string name="cookies_actions">ಕುಕಿ ಕ್ರಮಗಳು</string>
     <string name="cookies_delete_all">ಎಲ್ಲಾ ಕುಕಿಗಳನ್ನು ಅಳಿಸು</string>
-    <string name="cookies_delete_all_body">ಇದು Video Downloader ನಲ್ಲಿರುವ ಉಳಿಸಿದ ಎಲ್ಲಾ cookie entries ಅನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ.</string>
+    <string name="cookies_delete_all_body">ಇದು Downloader links ನಲ್ಲಿರುವ ಉಳಿಸಿದ ಎಲ್ಲಾ cookie entries ಅನ್ನು ತೆಗೆದುಹಾಕುತ್ತದೆ.</string>
     <string name="cookies_import_clipboard">clipboard ನಿಂದ import ಮಾಡು</string>
     <string name="cookies_export_clipboard">clipboard ಗೆ export ಮಾಡು</string>
     <string name="cookies_export_file">ಫೈಲ್ ಆಗಿ export ಮಾಡು</string>
@@ -400,7 +400,7 @@
     <string name="cookies_editor_paste">ಪೇಸ್ಟ್</string>
     <string name="cookies_editor_get">ಕುಕಿಗಳನ್ನು ಪಡೆಯಿರಿ</string>
     <string name="cookies_editor_url_hint">ಈ cookies ಸೇರಿದ site URL ಅನ್ನು paste ಮಾಡಿ.</string>
-    <string name="cookies_editor_keep_one">Video Downloader ಅದನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಮರುಬಳಕೆ ಮಾಡಲು ಪ್ರತಿ website ಗೆ ಒಂದೇ cookie profile ಇಟ್ಟುಕೊಳ್ಳಿ.</string>
+    <string name="cookies_editor_keep_one">Downloader links ಅದನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಮರುಬಳಕೆ ಮಾಡಲು ಪ್ರತಿ website ಗೆ ಒಂದೇ cookie profile ಇಟ್ಟುಕೊಳ್ಳಿ.</string>
     <string name="youtube_access_title">YouTube ಪ್ರವೇಶ</string>
     <string name="youtube_access_use_saved">ಉಳಿಸಿದ YouTube access ಬಳಸಿ</string>
     <string name="youtube_access_use_saved_body">ಕಷ್ಟದ downloads ಗಳಲ್ಲಿ ನಿಮ್ಮ YouTube cookies, PO tokens, ಮತ್ತು data-sync session hints ಅನ್ನು ಬಳಸುತ್ತದೆ.</string>

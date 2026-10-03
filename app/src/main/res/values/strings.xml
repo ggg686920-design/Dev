@@ -1,5 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="app_name">Video Downloader</string>
+    <string name="app_name">Downloader links</string>
     <string name="nav_home">Home</string>
     <string name="nav_downloads">Downloads</string>
     <string name="nav_more">More</string>
@@ -19,6 +19,15 @@
     <string name="common_loading">Loading…</string>
     <string name="common_unknown_uploader">Unknown uploader</string>
     <string name="common_estimated_size">Est. %1$s</string>
+    <string name="common_confirm">Confirm</string>
+    <string name="common_error">Error</string>
+    <string name="common_warning">Warning</string>
+    <string name="common_pause">Pause</string>
+    <string name="common_resume">Resume</string>
+    <string name="common_retry">Retry</string>
+    <string name="common_statistics">Statistics</string>
+    <string name="browser_analyze">Analyze link</string>
+    <string name="browser_url_placeholder">Paste URL here (YouTube, TikTok, X, etc.)…</string>
 
     <string name="browser_metered_title">Wi-Fi only is on</string>
     <string name="browser_metered_body">You\'re on a metered network right now. Keep this download queued until Wi-Fi is available, or allow cellular downloads now.</string>
@@ -533,7 +542,7 @@
     <string name="cookies_title">Cookies</string>
     <string name="cookies_actions">Cookie actions</string>
     <string name="cookies_delete_all">Delete all cookies</string>
-    <string name="cookies_delete_all_body">This removes every saved cookie entry from Video Downloader.</string>
+    <string name="cookies_delete_all_body">This removes every saved cookie entry from Downloader links.</string>
     <string name="cookies_import_clipboard">Import from clipboard</string>
     <string name="cookies_export_clipboard">Export to clipboard</string>
     <string name="cookies_export_file">Export File</string>
@@ -561,7 +570,7 @@
     <string name="cookies_editor_paste">Paste</string>
     <string name="cookies_editor_get">Get Cookies</string>
     <string name="cookies_editor_url_hint">Paste the site URL that these cookies belong to.</string>
-    <string name="cookies_editor_keep_one">Keep one cookie profile per website so Video Downloader can reuse it automatically.</string>
+    <string name="cookies_editor_keep_one">Keep one cookie profile per website so Downloader links can reuse it automatically.</string>
 
     <string name="youtube_access_title">YouTube Access</string>
     <string name="youtube_access_use_saved">Use saved YouTube access</string>
@@ -967,4 +976,101 @@
     <string name="quick_download_items_selected_count" tools:ignore="PluralsCandidate">%1$d / %2$d selected</string>
     <string name="quick_download_playlist_count" tools:ignore="PluralsCandidate">%1$d videos</string>
     <string name="quick_download_select_items_hint">Select items to download</string>
+
+    <string name="browser_batch_import_title">Batch Link Import</string>
+    <string name="browser_batch_import_desc">Paste multiple links or import a text file (.txt)</string>
+    <string name="browser_batch_import_button">Batch Import</string>
+    <string name="browser_import_file_button">Import from file (.txt)</string>
+    <string name="browser_start_all_downloads">Start All Downloads</string>
+    <string name="browser_links_found">%1$d links detected</string>
+    <string name="browser_duplicate_file_title">File Already Exists</string>
+    <string name="browser_duplicate_file_msg">A file with the same name exists: %1$s. What would you like to do?</string>
+    <string name="browser_duplicate_overwrite">Overwrite</string>
+    <string name="browser_duplicate_rename">Download New Copy</string>
+    <string name="browser_duplicate_keep">Keep Existing</string>
+    <string name="browser_speed_limit_title">Download Speed Limit</string>
+    <string name="browser_speed_unlimited">Unlimited (Max speed)</string>
+    <string name="browser_segment_title">Download Specific Segment</string>
+    <string name="browser_segment_start">Start Time (00:00:00)</string>
+    <string name="browser_segment_end">End Time (00:00:00)</string>
+    <string name="browser_naming_template_title">Filename Template</string>
+    <string name="browser_naming_template_example">Example: {title} - {channel} - {quality}</string>
+
+    <string name="downloads_active_tab">Active</string>
+    <string name="downloads_completed_tab">Completed</string>
+    <string name="downloads_library_tab">Library</string>
+    <string name="downloads_playlists_tab">Playlists</string>
+    <string name="downloads_empty_active">No active downloads right now</string>
+    <string name="downloads_empty_completed">No completed downloads yet</string>
+    <string name="downloads_sort_by">Sort by</string>
+    <string name="downloads_sort_name">Name</string>
+    <string name="downloads_sort_date">Date</string>
+    <string name="downloads_sort_size">Size</string>
+    <string name="downloads_sort_type">Type</string>
+    <string name="downloads_filter_images">Images</string>
+    <string name="downloads_filter_documents">Documents</string>
+    <string name="downloads_storage_free">Storage: %1$s free of %2$s</string>
+    <string name="downloads_storage_warning">Warning: Device storage is running low!</string>
+    <string name="downloads_speed">Speed: %1$s</string>
+    <string name="downloads_eta">ETA: %1$s</string>
+
+    <string name="more_preferences_section">Preferences &amp; Styling</string>
+
+    <string name="metadata_editor_title">Edit Media Metadata</string>
+    <string name="metadata_title">Title</string>
+    <string name="metadata_artist">Artist / Uploader</string>
+    <string name="metadata_album">Album</string>
+    <string name="metadata_genre">Genre</string>
+    <string name="metadata_save_success">Media metadata saved successfully</string>
+
+    <string name="playlist_title">Local Playlists</string>
+    <string name="playlist_create_new">Create New Playlist</string>
+    <string name="playlist_name_placeholder">Playlist Name…</string>
+    <string name="playlist_add_items">Add Items to Playlist</string>
+    <string name="playlist_play_all">Play All</string>
+    <string name="playlist_empty">No playlists created yet. Tap + to create one.</string>
+
+    <string name="stats_title">Statistics Dashboard</string>
+    <string name="stats_total_downloads">Total Downloads</string>
+    <string name="stats_completed">Completed</string>
+    <string name="stats_failed">Failed</string>
+    <string name="stats_total_bytes">Total Data Downloaded</string>
+    <string name="stats_storage_used">Media Storage Used</string>
+    <string name="stats_largest_files">Largest Downloaded Files</string>
+
+    <string name="backup_restore_title">Backup &amp; Restore</string>
+    <string name="backup_export">Export Settings &amp; Playlists</string>
+    <string name="backup_import">Restore from Backup File</string>
+    <string name="backup_success">Operation completed successfully</string>
+
+    <string name="pip_button_description">Picture in Picture floating mode</string>
+    <string name="subtitles_title">Subtitles</string>
+    <string name="subtitles_import">Import Subtitle (SRT/VTT)</string>
+    <string name="subtitles_delay">Subtitle Timing Offset</string>
+
+    <string name="storage_settings_title">Storage &amp; Folders</string>
+    <string name="downloads_settings_title">Download Settings</string>
+    <string name="network_battery_title">Network &amp; Battery</string>
+    <string name="site_presets_title">Site-Specific Presets</string>
+
+    <string name="notif_active_default_title">Downloading media</string>
+    <string name="notif_active_preparing">Preparing download</string>
+    <string name="notif_active_complete_sub">%1$d%% complete</string>
+    <string name="notif_completed_title">Download complete</string>
+    <string name="notif_completed_sub">Completed</string>
+    <string name="notif_completed_saved_as">Saved as %1$s</string>
+    <string name="notif_completed_tap_view">Tap to view in app</string>
+    <string name="notif_failed_title">Download failed</string>
+    <string name="notif_failed_sub">Error</string>
+    <string name="notif_failed_default">Download failed.</string>
+    <string name="notif_canceled_title">Download canceled</string>
+    <string name="notif_canceled_sub">Canceled</string>
+    <string name="notif_canceled_msg">Canceled by you. Tap to review the queue.</string>
+    <string name="notif_action_open">Open</string>
+
+    <string name="welcome_dialog_title">Welcome to Downloader links</string>
+    <string name="welcome_dialog_developer">Developer: HarryScloser</string>
+    <string name="welcome_dialog_message">Welcome to Downloader links! We\'re glad to have you. Join developer HarryScloser\'s official Telegram channel for the latest updates, features, and direct support.</string>
+    <string name="welcome_dialog_btn_open">Open Link</string>
+    <string name="welcome_dialog_btn_cancel">Cancel</string>
 </resources>

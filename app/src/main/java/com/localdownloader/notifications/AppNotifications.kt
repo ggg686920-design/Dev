@@ -11,6 +11,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
+import com.localdownloader.R
 import com.localdownloader.AppLaunchRouter
 import com.localdownloader.media.isLikelyPlayableMediaPath
 import java.io.File
@@ -140,11 +141,18 @@ object AppNotifications {
     ): Notification {
         ensureChannels(context)
         val safeProgress = progress.coerceIn(0, 100)
+        val defaultTitle = context.getString(R.string.notif_active_default_title)
+        val subText = if (safeProgress > 0) {
+            context.getString(R.string.notif_active_complete_sub, safeProgress)
+        } else {
+            context.getString(R.string.notif_active_preparing)
+        }
         return NotificationCompat.Builder(context, CHANNEL_ACTIVE_DOWNLOADS)
             .setSmallIcon(android.R.drawable.stat_sys_download)
-            .setContentTitle(title.ifBlank { "Downloading media" })
+            .setContentTitle(title.ifBlank { defaultTitle })
             .setContentText(
                 buildProgressLine(
+                    context = context,
                     progress = safeProgress,
                     downloadedStr = downloadedStr,
                     totalStr = totalStr,
@@ -152,7 +160,7 @@ object AppNotifications {
                     eta = eta,
                 ),
             )
-            .setSubText(if (safeProgress > 0) "$safeProgress% complete" else "Preparing download")
+            .setSubText(subText)
             .setCategory(NotificationCompat.CATEGORY_PROGRESS)
             .setPriority(NotificationCompat.PRIORITY_LOW)
             .setOnlyAlertOnce(true)
@@ -180,6 +188,10 @@ object AppNotifications {
         if (!canPostUserNotifications(context)) return
         ensureChannels(context)
 
+        val defaultTitle = context.getString(R.string.notif_completed_title)
+        val subText = context.getString(R.string.notif_completed_sub)
+        val openAction = context.getString(R.string.notif_action_open)
+
         val notificationId = terminalNotificationId(taskId)
         val contentIntent = buildRoutePendingIntent(
             context = context,
@@ -187,13 +199,13 @@ object AppNotifications {
             taskId = taskId,
             requestCode = requestCodeFor(taskId, AppLaunchRouter.ROUTE_DOWNLOADS),
         )
-        val message = buildCompletionLine(outputPath = outputPath, sizeLabel = sizeLabel)
+        val message = buildCompletionLine(context = context, outputPath = outputPath, sizeLabel = sizeLabel)
         val builder = NotificationCompat.Builder(context, CHANNEL_COMPLETED_DOWNLOADS)
             .setSmallIcon(android.R.drawable.stat_sys_download_done)
-            .setContentTitle(title.ifBlank { "Download complete" })
+            .setContentTitle(title.ifBlank { defaultTitle })
             .setContentText(message)
             .setStyle(NotificationCompat.BigTextStyle().bigText(message))
-            .setSubText("Completed")
+            .setSubText(subText)
             .setCategory(NotificationCompat.CATEGORY_STATUS)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setAutoCancel(true)
@@ -203,7 +215,7 @@ object AppNotifications {
         if (isPlayableMediaPath(outputPath)) {
             builder.addAction(
                 android.R.drawable.ic_media_play,
-                "Open",
+                openAction,
                 buildRoutePendingIntent(
                     context = context,
                     route = AppLaunchRouter.ROUTE_PLAYER,
@@ -225,16 +237,20 @@ object AppNotifications {
         if (!canPostUserNotifications(context)) return
         ensureChannels(context)
 
-        val message = errorMessage.trim().ifBlank { "Download failed." }
+        val defaultTitle = context.getString(R.string.notif_failed_title)
+        val defaultMessage = context.getString(R.string.notif_failed_default)
+        val subText = context.getString(R.string.notif_failed_sub)
+        val message = errorMessage.trim().ifBlank { defaultMessage }
+
         notify(
             context = context,
             notificationId = terminalNotificationId(taskId),
             notification = NotificationCompat.Builder(context, CHANNEL_DOWNLOAD_ERRORS)
                 .setSmallIcon(android.R.drawable.stat_notify_error)
-                .setContentTitle(title.ifBlank { "Download failed" })
+                .setContentTitle(title.ifBlank { defaultTitle })
                 .setContentText(message)
                 .setStyle(NotificationCompat.BigTextStyle().bigText(message))
-                .setSubText("Error")
+                .setSubText(subText)
                 .setCategory(NotificationCompat.CATEGORY_ERROR)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setAutoCancel(true)
@@ -259,18 +275,22 @@ object AppNotifications {
         if (!canPostUserNotifications(context)) return
         ensureChannels(context)
 
+        val defaultTitle = context.getString(R.string.notif_canceled_title)
+        val cancelMsg = context.getString(R.string.notif_canceled_msg)
+        val subText = context.getString(R.string.notif_canceled_sub)
+
         notify(
             context = context,
             notificationId = terminalNotificationId(taskId),
             notification = NotificationCompat.Builder(context, CHANNEL_CANCELED_DOWNLOADS)
                 .setSmallIcon(android.R.drawable.ic_menu_close_clear_cancel)
-                .setContentTitle(title.ifBlank { "Download canceled" })
-                .setContentText("Canceled by you. Tap to review the queue.")
+                .setContentTitle(title.ifBlank { defaultTitle })
+                .setContentText(cancelMsg)
                 .setStyle(
                     NotificationCompat.BigTextStyle()
-                        .bigText("Canceled by you. Tap to review the queue."),
+                        .bigText(cancelMsg),
                 )
-                .setSubText("Canceled")
+                .setSubText(subText)
                 .setCategory(NotificationCompat.CATEGORY_STATUS)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(true)
@@ -319,6 +339,7 @@ object AppNotifications {
     }
 
     private fun buildProgressLine(
+        context: Context,
         progress: Int,
         downloadedStr: String?,
         totalStr: String?,
@@ -334,17 +355,21 @@ object AppNotifications {
             if (!speed.isNullOrBlank()) add(speed)
             if (!eta.isNullOrBlank()) add("ETA $eta")
         }
-        return parts.joinToString(" | ").ifBlank { "Preparing download" }
+        return parts.joinToString(" | ").ifBlank { context.getString(R.string.notif_active_preparing) }
     }
 
     private fun buildCompletionLine(
+        context: Context,
         outputPath: String?,
         sizeLabel: String?,
     ): String {
         val parts = buildList {
             sizeLabel?.takeIf { it.isNotBlank() }?.let(::add)
-            outputPath?.takeIf { it.isNotBlank() }?.let { add("Saved as ${File(it).name}") }
-            add("Tap to view it in the app")
+            outputPath?.takeIf { it.isNotBlank() }?.let {
+                val fileName = File(it).name
+                add(context.getString(R.string.notif_completed_saved_as, fileName))
+            }
+            add(context.getString(R.string.notif_completed_tap_view))
         }
         return parts.joinToString(" | ")
     }

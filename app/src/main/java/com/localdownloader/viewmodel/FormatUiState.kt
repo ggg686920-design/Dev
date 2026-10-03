@@ -141,6 +141,13 @@ data class FormatUiState(
     val lastQueuedAudioBitrate: Int? = null,
     val lastQueuedOutputTransform: OutputTransform? = null,
     val lastQueuedQuality: VideoQuality? = null,
+    val speedLimitKbps: Int? = null,
+    val segmentStartTime: String = "",
+    val segmentEndTime: String = "",
+    val scheduledTimeEpochMs: Long? = null,
+    val showBatchImportDialog: Boolean = false,
+    val showDuplicateFileDialog: Boolean = false,
+    val pendingDuplicateFileName: String = "",
 ) {
     val shouldShowDownloadSetupNotice: Boolean
         get() = hasLoadedSettings &&

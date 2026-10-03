@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "android-downloader"
+rootProject.name = "Downloader links"
 include(":app")

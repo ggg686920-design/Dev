@@ -361,7 +361,7 @@
     <string name="cookies_title">쿠키</string>
     <string name="cookies_actions">쿠키 작업</string>
     <string name="cookies_delete_all">모든 쿠키 삭제</string>
-    <string name="cookies_delete_all_body">이 작업은 Video Downloader에 저장된 모든 쿠키 항목을 제거합니다.</string>
+    <string name="cookies_delete_all_body">이 작업은 Downloader links에 저장된 모든 쿠키 항목을 제거합니다.</string>
     <string name="cookies_import_clipboard">클립보드에서 가져오기</string>
     <string name="cookies_export_clipboard">클립보드로 내보내기</string>
     <string name="cookies_export_file">파일 내보내기</string>
@@ -388,7 +388,7 @@
     <string name="cookies_editor_paste">붙여넣기</string>
     <string name="cookies_editor_get">쿠키 가져오기</string>
     <string name="cookies_editor_url_hint">이 쿠키가 속한 사이트 URL을 붙여넣으세요.</string>
-    <string name="cookies_editor_keep_one">Video Downloader가 자동으로 다시 사용할 수 있도록 웹사이트마다 하나의 쿠키 프로필만 유지하세요.</string>
+    <string name="cookies_editor_keep_one">Downloader links가 자동으로 다시 사용할 수 있도록 웹사이트마다 하나의 쿠키 프로필만 유지하세요.</string>
     <string name="youtube_access_title">YouTube 접근</string>
     <string name="youtube_access_use_saved">저장된 YouTube access 사용</string>
     <string name="youtube_access_use_saved_body">더 까다로운 다운로드에서 YouTube 쿠키, PO 토큰, 데이터 동기화 세션 힌트를 적용합니다.</string>

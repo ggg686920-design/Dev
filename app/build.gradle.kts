@@ -93,6 +93,7 @@ android {
         versionCode = selectedVersionCode
         versionName = selectedVersionName
         buildConfigField("String", "APP_RELEASE_CHANNEL", "\"stable\"")
+        buildConfigField("boolean", "YTDLP_AUTO_UPDATE_DEFAULT", "true")
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -100,24 +101,17 @@ android {
         }
 
         ndk {
-            abiFilters += listOf("arm64-v8a")
-        }
-    }
-
-    flavorDimensions += "distribution"
-
-    productFlavors {
-        create("standard") {
-            dimension = "distribution"
-            buildConfigField("boolean", "YTDLP_AUTO_UPDATE_DEFAULT", "true")
-        }
-        create("repoSafe") {
-            dimension = "distribution"
-            buildConfigField("boolean", "YTDLP_AUTO_UPDATE_DEFAULT", "false")
+            abiFilters += listOf("arm64-v8a", "armeabi-v7a", "x86_64")
         }
     }
 
     signingConfigs {
+        create("debugConfig") {
+            storeFile = file("${rootDir}/debug.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
         create("internalDebugStable") {
             if (hasInternalDebugSigning) {
                 storeFile = file(requireNotNull(internalDebugStoreFile))
@@ -149,10 +143,7 @@ android {
             )
         }
         debug {
-            applicationIdSuffix = ".debug"
-            if (hasInternalDebugSigning) {
-                signingConfig = signingConfigs.getByName("internalDebugStable")
-            }
+            signingConfig = signingConfigs.getByName("debugConfig")
         }
         create("nightly") {
             initWith(getByName("debug"))

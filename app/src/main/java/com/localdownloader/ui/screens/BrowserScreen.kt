@@ -108,6 +108,10 @@ import com.localdownloader.domain.models.audioFormatSupportsBitrateControl
 import com.localdownloader.domain.models.choicesForStreamType
 import com.localdownloader.domain.models.effectiveOutputStreamType
 import androidx.compose.material.icons.outlined.Subtitles
+import androidx.compose.material.icons.rounded.Layers
+import com.localdownloader.ui.components.BatchLinkImportDialog
+import com.localdownloader.ui.components.DuplicateFileAction
+import com.localdownloader.ui.components.DuplicateFileDialog
 import com.localdownloader.ui.components.FormatSelectionBottomSheet
 import com.localdownloader.ui.components.InlineFeedbackCard
 import com.localdownloader.ui.components.SubtitleSelectionCard
@@ -180,6 +184,11 @@ fun BrowserScreen(
     onQueueWhenWifiAvailable: () -> Unit,
     onAllowCellularDownloadsAndQueue: () -> Unit,
     onDarkThemeChanged: (Boolean) -> Unit,
+    onShowBatchImportDialog: (Boolean) -> Unit = {},
+    onQueueBatchLinks: (List<String>, StreamType, String) -> Unit = { _, _, _ -> },
+    onSpeedLimitChanged: (Int?) -> Unit = {},
+    onSegmentTimesChanged: (String, String) -> Unit = { _, _ -> },
+    onDuplicateActionSelected: (DuplicateFileAction) -> Unit = {},
     modifier: Modifier = Modifier,
     isDownloadButtonEnabled: Boolean = true,
 ) {
@@ -198,6 +207,20 @@ fun BrowserScreen(
             R.string.browser_use_dark_theme
         },
     )
+
+    if (uiState.showBatchImportDialog) {
+        BatchLinkImportDialog(
+            onDismissRequest = { onShowBatchImportDialog(false) },
+            onQueueBatchLinks = onQueueBatchLinks,
+        )
+    }
+
+    if (uiState.showDuplicateFileDialog) {
+        DuplicateFileDialog(
+            fileName = uiState.pendingDuplicateFileName,
+            onActionSelected = onDuplicateActionSelected,
+        )
+    }
 
     if (uiState.showMeteredNetworkDialog) {
         AlertDialog(
@@ -391,6 +414,15 @@ fun BrowserScreen(
                     horizontalArrangement = Arrangement.spacedBy(10.dp),
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
+                    IconButton(
+                        onClick = { onShowBatchImportDialog(true) },
+                    ) {
+                        Icon(
+                            imageVector = Icons.Rounded.Layers,
+                            contentDescription = stringResource(R.string.browser_batch_import_button),
+                            tint = MaterialTheme.colorScheme.primary,
+                        )
+                    }
                     TextButton(
                         onClick = {
                             scope.launch {

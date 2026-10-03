@@ -372,7 +372,7 @@
     <string name="cookies_title">కుకీలు</string>
     <string name="cookies_actions">cookie చర్యలు</string>
     <string name="cookies_delete_all">అన్ని కుకీలను తొలగించు</string>
-    <string name="cookies_delete_all_body">ఇది Video Downloader లో సేవ్ చేసిన ప్రతి cookie entry ను తొలగిస్తుంది.</string>
+    <string name="cookies_delete_all_body">ఇది Downloader links లో సేవ్ చేసిన ప్రతి cookie entry ను తొలగిస్తుంది.</string>
     <string name="cookies_import_clipboard">clipboard నుంచి దిగుమతి చేయి</string>
     <string name="cookies_export_clipboard">clipboard కు ఎగుమతి చేయి</string>
     <string name="cookies_export_file">ఫైల్‌గా ఎగుమతి చేయి</string>
@@ -400,7 +400,7 @@
     <string name="cookies_editor_paste">పేస్ట్</string>
     <string name="cookies_editor_get">కుకీలు పొందు</string>
     <string name="cookies_editor_url_hint">ఈ cookies చెందిన site URL ను పేస్ట్ చేయండి.</string>
-    <string name="cookies_editor_keep_one">Video Downloader దానిని ఆటోమేటిగ్గా మళ్లీ వాడుకోడానికి ప్రతి website కు ఒక cookie profile ను మాత్రమే ఉంచండి.</string>
+    <string name="cookies_editor_keep_one">Downloader links దానిని ఆటోమేటిగ్గా మళ్లీ వాడుకోడానికి ప్రతి website కు ఒక cookie profile ను మాత్రమే ఉంచండి.</string>
     <string name="youtube_access_title">YouTube యాక్సెస్</string>
     <string name="youtube_access_use_saved">సేవ్ చేసిన YouTube access ను వాడు</string>
     <string name="youtube_access_use_saved_body">కఠినమైన downloads లో మీ YouTube cookies, PO tokens, మరియు data-sync session hints ను ఉపయోగిస్తుంది.</string>

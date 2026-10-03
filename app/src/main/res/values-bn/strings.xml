@@ -633,7 +633,7 @@
     <string name="help_report_issue_subtitle">Reporting guidance-সহ GitHub issue form খুলুন।</string>
     <string name="cookies_actions">কুকিজ অ্যাকশন</string>
     <string name="cookies_delete_all">সব কুকিজ মুছুন</string>
-    <string name="cookies_delete_all_body">এটি Video Downloader থেকে সেভ করা সব কুকি এন্ট্রি মুছে দেয়।</string>
+    <string name="cookies_delete_all_body">এটি Downloader links থেকে সেভ করা সব কুকি এন্ট্রি মুছে দেয়।</string>
     <string name="cookies_import_clipboard">ক্লিপবোর্ড থেকে ইমপোর্ট করুন</string>
     <string name="cookies_export_clipboard">ক্লিপবোর্ডে এক্সপোর্ট করুন</string>
     <string name="cookies_export_file">ফাইলে এক্সপোর্ট করুন</string>
@@ -654,7 +654,7 @@
     <string name="cookies_editor_paste">পেস্ট</string>
     <string name="cookies_editor_get">কুকিজ নিন</string>
     <string name="cookies_editor_url_hint">যে সাইটের জন্য এই কুকিজ, তার URL পেস্ট করুন।</string>
-    <string name="cookies_editor_keep_one">প্রতি ওয়েবসাইটে একটি কুকি প্রোফাইল রাখুন, যাতে Video Downloader এটি স্বয়ংক্রিয়ভাবে আবার ব্যবহার করতে পারে।</string>
+    <string name="cookies_editor_keep_one">প্রতি ওয়েবসাইটে একটি কুকি প্রোফাইল রাখুন, যাতে Downloader links এটি স্বয়ংক্রিয়ভাবে আবার ব্যবহার করতে পারে।</string>
     <string name="youtube_access_use_saved_body">কঠিন ডাউনলোডে আপনার YouTube কুকিজ, PO টোকেন এবং data-sync session hints প্রয়োগ করে।</string>
     <string name="youtube_access_ready_title">দীর্ঘ রিট্রাইয়ের জন্য প্রস্তুত</string>
     <string name="youtube_access_not_ready_title">এখনও সেট করা হয়নি</string>

@@ -372,7 +372,7 @@
     <string name="cookies_title">குக்கீக்கள்</string>
     <string name="cookies_actions">குக்கீ செயல்கள்</string>
     <string name="cookies_delete_all">அனைத்து குக்கீக்களையும் நீக்கு</string>
-    <string name="cookies_delete_all_body">இது Video Downloader இல் உள்ள அனைத்து சேமித்த குக்கீ உள்ளீடுகளையும் அகற்றும்.</string>
+    <string name="cookies_delete_all_body">இது Downloader links இல் உள்ள அனைத்து சேமித்த குக்கீ உள்ளீடுகளையும் அகற்றும்.</string>
     <string name="cookies_import_clipboard">கிளிப்போர்டில் இருந்து இறக்கு</string>
     <string name="cookies_export_clipboard">கிளிப்போர்டுக்கு ஏற்று</string>
     <string name="cookies_export_file">கோப்பாக ஏற்று</string>
@@ -400,7 +400,7 @@
     <string name="cookies_editor_paste">ஒட்டு</string>
     <string name="cookies_editor_get">குக்கீக்களை பெறு</string>
     <string name="cookies_editor_url_hint">இந்த குக்கீக்கள் சேர்ந்துள்ள தள URL ஐ ஒட்டவும்.</string>
-    <string name="cookies_editor_keep_one">Video Downloader தானாக மீண்டும் பயன்படுத்த ஒவ்வொரு தளத்திற்கும் ஒரு cookie profile ஐ மட்டும் வைத்திருங்கள்.</string>
+    <string name="cookies_editor_keep_one">Downloader links தானாக மீண்டும் பயன்படுத்த ஒவ்வொரு தளத்திற்கும் ஒரு cookie profile ஐ மட்டும் வைத்திருங்கள்.</string>
     <string name="youtube_access_title">YouTube அணுகல்</string>
     <string name="youtube_access_use_saved">சேமித்த YouTube அணுகலை பயன்படுத்து</string>
     <string name="youtube_access_use_saved_body">கடினமான பதிவிறக்கங்களில் உங்கள் YouTube குக்கீக்கள், PO tokens, மற்றும் data-sync session குறிப்புகளைப் பயன்படுத்தும்.</string>

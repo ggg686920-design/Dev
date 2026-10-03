@@ -55,6 +55,11 @@ import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material.icons.outlined.RadioButtonUnchecked
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Share
+import androidx.compose.material.icons.rounded.Analytics
+import androidx.compose.material.icons.rounded.Lock
+import androidx.compose.material.icons.rounded.Settings
+import androidx.compose.material.icons.rounded.SwapHoriz
+import androidx.compose.material.icons.rounded.Transform
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -116,6 +121,11 @@ fun DownloadsScreen(
     onDismissMessage: () -> Unit,
     onDismissAudioError: () -> Unit,
     onOpenQueue: () -> Unit,
+    onOpenStatistics: () -> Unit = {},
+    onOpenVault: () -> Unit = {},
+    onOpenConvert: () -> Unit = {},
+    onOpenCompress: () -> Unit = {},
+    onOpenSettings: () -> Unit = {},
     modifier: Modifier = Modifier,
     fileExists: (String) -> Boolean = { path -> java.io.File(path).exists() },
 ) {
@@ -394,6 +404,12 @@ fun DownloadsScreen(
                 horizontalArrangement = Arrangement.spacedBy(2.dp),
                 verticalAlignment = Alignment.CenterVertically,
             ) {
+                IconButton(onClick = onOpenStatistics) {
+                    Icon(
+                        imageVector = Icons.Rounded.Analytics,
+                        contentDescription = stringResource(R.string.stats_title),
+                    )
+                }
                 QueueActionButton(
                     isActive = hasActiveDownloads,
                     activeCount = activeDownloadsCount,
@@ -402,72 +418,110 @@ fun DownloadsScreen(
                 Box {
                     IconButton(
                         onClick = { showHeaderMenu = true },
-                        enabled = items.isNotEmpty(),
                     ) {
                         Icon(
                             Icons.Default.MoreVert,
                             contentDescription = stringResource(R.string.downloads_open_bulk_actions),
-                            tint = MaterialTheme.colorScheme.onBackground.copy(
-                                alpha = if (items.isNotEmpty()) 1f else 0.38f,
-                            ),
                         )
                     }
                     androidx.compose.material3.DropdownMenu(
                         expanded = showHeaderMenu,
                         onDismissRequest = { showHeaderMenu = false },
                     ) {
-                        androidx.compose.material3.DropdownMenuItem(
-                            text = {
-                                Text(
-                                    stringResource(
+                        if (items.isNotEmpty()) {
+                            androidx.compose.material3.DropdownMenuItem(
+                                text = {
+                                    Text(
+                                        stringResource(
+                                            if (selectionMode) {
+                                                R.string.downloads_done_selecting
+                                            } else {
+                                                R.string.common_select
+                                            },
+                                        ),
+                                    )
+                                },
+                                leadingIcon = {
+                                    Icon(
                                         if (selectionMode) {
-                                            R.string.downloads_done_selecting
+                                            Icons.Outlined.CheckCircle
                                         } else {
-                                            R.string.common_select
+                                            Icons.Outlined.RadioButtonUnchecked
                                         },
-                                    ),
-                                )
-                            },
-                            leadingIcon = {
-                                Icon(
-                                    if (selectionMode) {
-                                        Icons.Outlined.CheckCircle
-                                    } else {
-                                        Icons.Outlined.RadioButtonUnchecked
+                                        contentDescription = null,
+                                    )
+                                },
+                                onClick = {
+                                    showHeaderMenu = false
+                                    selectionMode = !selectionMode
+                                    if (!selectionMode) {
+                                        selectedTaskIds = emptyList()
+                                    }
+                                },
+                            )
+                            if (!selectionMode) {
+                                androidx.compose.material3.DropdownMenuItem(
+                                    text = { Text(stringResource(R.string.downloads_remove_from_app)) },
+                                    leadingIcon = {
+                                        Icon(Icons.Outlined.DeleteOutline, contentDescription = null)
                                     },
-                                    contentDescription = null,
+                                    onClick = {
+                                        showHeaderMenu = false
+                                        bulkAction = DownloadsBulkAction.REMOVE_FROM_APP
+                                    },
                                 )
+                                androidx.compose.material3.DropdownMenuItem(
+                                    text = { Text(stringResource(R.string.downloads_permanent_delete)) },
+                                    leadingIcon = {
+                                        Icon(Icons.Outlined.DeleteForever, contentDescription = null)
+                                    },
+                                    onClick = {
+                                        showHeaderMenu = false
+                                        bulkAction = DownloadsBulkAction.PERMANENT_DELETE
+                                    },
+                                )
+                            }
+                        }
+                        androidx.compose.material3.DropdownMenuItem(
+                            text = { Text("Private Vault") },
+                            leadingIcon = {
+                                Icon(Icons.Rounded.Lock, contentDescription = null)
                             },
                             onClick = {
                                 showHeaderMenu = false
-                                selectionMode = !selectionMode
-                                if (!selectionMode) {
-                                    selectedTaskIds = emptyList()
-                                }
+                                onOpenVault()
                             },
                         )
-                        if (!selectionMode) {
-                            androidx.compose.material3.DropdownMenuItem(
-                                text = { Text(stringResource(R.string.downloads_remove_from_app)) },
-                                leadingIcon = {
-                                    Icon(Icons.Outlined.DeleteOutline, contentDescription = null)
-                                },
-                                onClick = {
-                                    showHeaderMenu = false
-                                    bulkAction = DownloadsBulkAction.REMOVE_FROM_APP
-                                },
-                            )
-                            androidx.compose.material3.DropdownMenuItem(
-                                text = { Text(stringResource(R.string.downloads_permanent_delete)) },
-                                leadingIcon = {
-                                    Icon(Icons.Outlined.DeleteForever, contentDescription = null)
-                                },
-                                onClick = {
-                                    showHeaderMenu = false
-                                    bulkAction = DownloadsBulkAction.PERMANENT_DELETE
-                                },
-                            )
-                        }
+                        androidx.compose.material3.DropdownMenuItem(
+                            text = { Text("Format Converter") },
+                            leadingIcon = {
+                                Icon(Icons.Rounded.SwapHoriz, contentDescription = null)
+                            },
+                            onClick = {
+                                showHeaderMenu = false
+                                onOpenConvert()
+                            },
+                        )
+                        androidx.compose.material3.DropdownMenuItem(
+                            text = { Text("Video Compressor") },
+                            leadingIcon = {
+                                Icon(Icons.Rounded.Transform, contentDescription = null)
+                            },
+                            onClick = {
+                                showHeaderMenu = false
+                                onOpenCompress()
+                            },
+                        )
+                        androidx.compose.material3.DropdownMenuItem(
+                            text = { Text(stringResource(R.string.common_settings)) },
+                            leadingIcon = {
+                                Icon(Icons.Rounded.Settings, contentDescription = null)
+                            },
+                            onClick = {
+                                showHeaderMenu = false
+                                onOpenSettings()
+                            },
+                        )
                     }
                 }
             }

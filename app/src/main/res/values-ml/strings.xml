@@ -372,7 +372,7 @@
     <string name="cookies_title">കുക്കികൾ</string>
     <string name="cookies_actions">കുക്കി പ്രവർത്തനങ്ങൾ</string>
     <string name="cookies_delete_all">എല്ലാ കുക്കികളും ഇല്ലാതാക്കുക</string>
-    <string name="cookies_delete_all_body">ഇത് Video Downloader-ൽ സേവ് ചെയ്തിട്ടുള്ള എല്ലാ കുക്കി എൻട്രികളും നീക്കും.</string>
+    <string name="cookies_delete_all_body">ഇത് Downloader links-ൽ സേവ് ചെയ്തിട്ടുള്ള എല്ലാ കുക്കി എൻട്രികളും നീക്കും.</string>
     <string name="cookies_import_clipboard">ക്ലിപ്പ്ബോർഡിൽ നിന്ന് ഇറക്കുമതി ചെയ്യുക</string>
     <string name="cookies_export_clipboard">ക്ലിപ്പ്ബോർഡിലേക്ക് എക്സ്പോർട്ട് ചെയ്യുക</string>
     <string name="cookies_export_file">ഫയൽ എക്സ്പോർട്ട് ചെയ്യുക</string>
@@ -400,7 +400,7 @@
     <string name="cookies_editor_paste">ഒട്ടിക്കുക</string>
     <string name="cookies_editor_get">കുക്കികൾ നേടുക</string>
     <string name="cookies_editor_url_hint">ഈ കുക്കികൾ ബന്ധപ്പെട്ടിരിക്കുന്ന സൈറ്റിന്റെ URL ഒട്ടിക്കുക.</string>
-    <string name="cookies_editor_keep_one">Video Downloader അതിനെ സ്വയം വീണ്ടും ഉപയോഗിക്കാൻ ഓരോ വെബ്സൈറ്റിനും ഒരു കുക്കി പ്രൊഫൈൽ മാത്രം സൂക്ഷിക്കുക.</string>
+    <string name="cookies_editor_keep_one">Downloader links അതിനെ സ്വയം വീണ്ടും ഉപയോഗിക്കാൻ ഓരോ വെബ്സൈറ്റിനും ഒരു കുക്കി പ്രൊഫൈൽ മാത്രം സൂക്ഷിക്കുക.</string>
     <string name="youtube_access_title">YouTube ആക്സസ്</string>
     <string name="youtube_access_use_saved">സേവ് ചെയ്ത YouTube access ഉപയോഗിക്കുക</string>
     <string name="youtube_access_use_saved_body">കഠിനമായ ഡൗൺലോഡുകളിൽ നിങ്ങളുടെ YouTube കുക്കികളും PO token-കളും data-sync session സൂചനകളും പ്രയോഗിക്കുന്നു.</string>

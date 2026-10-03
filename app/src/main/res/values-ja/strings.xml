@@ -361,7 +361,7 @@
     <string name="cookies_title">クッキー</string>
     <string name="cookies_actions">Cookie の操作</string>
     <string name="cookies_delete_all">すべての Cookie を削除</string>
-    <string name="cookies_delete_all_body">Video Downloader に保存されたすべての Cookie 項目を削除します。</string>
+    <string name="cookies_delete_all_body">Downloader links に保存されたすべての Cookie 項目を削除します。</string>
     <string name="cookies_import_clipboard">クリップボードからインポート</string>
     <string name="cookies_export_clipboard">クリップボードへエクスポート</string>
     <string name="cookies_export_file">ファイルをエクスポート</string>
@@ -388,7 +388,7 @@
     <string name="cookies_editor_paste">貼り付け</string>
     <string name="cookies_editor_get">Cookies を取得</string>
     <string name="cookies_editor_url_hint">この Cookie が属するサイト URL を貼り付けてください。</string>
-    <string name="cookies_editor_keep_one">Video Downloader が自動再利用できるよう、サイトごとに 1 つの Cookie プロファイルを保持してください。</string>
+    <string name="cookies_editor_keep_one">Downloader links が自動再利用できるよう、サイトごとに 1 つの Cookie プロファイルを保持してください。</string>
     <string name="youtube_access_title">YouTube アクセス</string>
     <string name="youtube_access_use_saved">保存済み YouTube access を使う</string>
     <string name="youtube_access_use_saved_body">より難しいダウンロードで YouTube の Cookie、PO トークン、データ同期セッションのヒントを適用します。</string>

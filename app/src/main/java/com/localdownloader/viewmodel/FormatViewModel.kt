@@ -1941,6 +1941,9 @@ class FormatViewModel @Inject constructor(
                     audioFormat = if (isAudioOnly) audioFormat.ifBlank { null } else null,
                     audioBitrateKbps = resolvedAudioBitrateKbps,
                     concurrentFragments = state.appSettings.defaultConcurrentFragments,
+                    speedLimitKbps = state.speedLimitKbps,
+                    segmentStartTime = state.segmentStartTime.ifBlank { null },
+                    segmentEndTime = state.segmentEndTime.ifBlank { null },
                 ),
                 queueNote = listOfNotNull(
                     youtubeRouting.queueNote,
@@ -3016,6 +3019,52 @@ class FormatViewModel @Inject constructor(
         return (incoming + current)
             .distinctBy { it.webpageUrl }
             .sortedByDescending { it.analyzedAtEpochMs }
+    }
+
+    fun setSpeedLimitKbps(kbps: Int?) {
+        _uiState.update { it.copy(speedLimitKbps = kbps) }
+    }
+
+    fun setSegmentTimes(start: String, end: String) {
+        _uiState.update { it.copy(segmentStartTime = start, segmentEndTime = end) }
+    }
+
+    fun setShowBatchImportDialog(show: Boolean) {
+        _uiState.update { it.copy(showBatchImportDialog = show) }
+    }
+
+    fun setShowDuplicateFileDialog(show: Boolean, fileName: String = "") {
+        _uiState.update { it.copy(showDuplicateFileDialog = show, pendingDuplicateFileName = fileName) }
+    }
+
+    fun queueBatchUrls(urls: List<String>, streamType: StreamType, audioFormat: String) {
+        viewModelScope.launch {
+            var queuedCount = 0
+            urls.forEach { rawUrl ->
+                val trimmed = rawUrl.trim()
+                if (trimmed.isNotBlank()) {
+                    val isAudio = streamType == StreamType.AUDIO_ONLY
+                    val formatSelector = if (isAudio) "ba/b" else "bv*+ba/b"
+                    val options = DownloadOptions(
+                        url = trimmed,
+                        formatId = formatSelector,
+                        extractAudio = isAudio,
+                        audioFormat = if (isAudio) audioFormat else null,
+                        speedLimitKbps = _uiState.value.speedLimitKbps,
+                    )
+                    runCatching {
+                        repository.enqueueDownload(
+                            options = options,
+                            titleHint = "",
+                        )
+                        queuedCount++
+                    }
+                }
+            }
+            _uiState.update {
+                it.copy(infoMessage = "Added $queuedCount links to download queue.")
+            }
+        }
     }
 }
 

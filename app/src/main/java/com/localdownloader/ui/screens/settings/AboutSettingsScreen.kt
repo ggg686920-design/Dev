@@ -112,17 +112,17 @@ fun AboutSettingsScreen(
         item {
             PreferenceItem(
                 icon = Icons.Rounded.Language,
-                title = stringResource(R.string.about_website_title),
-                description = "video.sandipmaity.me",
-                onClick = { openUrl("https://video.sandipmaity.me") },
+                title = "Telegram Channel",
+                description = "HarryScloser • t.me/HarryScloser6",
+                onClick = { openUrl("https://t.me/HarryScloser6") },
             )
         }
         item {
             PreferenceItem(
                 icon = Icons.Rounded.Code,
                 title = stringResource(R.string.about_source_title),
-                description = "github.com/iam-sandipmaity/video-downloader",
-                onClick = { openUrl("https://github.com/iam-sandipmaity/video-downloader") },
+                description = "Downloader links • Professional Link Downloader",
+                onClick = null,
             )
         }
         item {
@@ -139,23 +139,6 @@ fun AboutSettingsScreen(
                 title = "FFmpeg",
                 description = "Media processing runtime",
                 onClick = { openUrl("https://github.com/FFmpeg/FFmpeg") },
-            )
-        }
-        item {
-            PreferenceItem(
-                icon = Icons.Rounded.Language,
-                title = stringResource(R.string.about_developer_github_title),
-                description = "@iam-sandipmaity",
-                onClick = { openUrl("https://github.com/iam-sandipmaity") },
-            )
-        }
-        item {
-            AboutAssetRow(
-                assetPath = "file:///android_asset/platform_logos/x.svg",
-                imageLoader = svgImageLoader,
-                title = stringResource(R.string.about_developer_x_title),
-                subtitle = "@iam_sandipmaity",
-                onClick = { openUrl("https://x.com/iam_sandipmaity") },
             )
         }
         item {

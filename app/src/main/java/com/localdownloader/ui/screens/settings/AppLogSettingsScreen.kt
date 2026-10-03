@@ -896,7 +896,7 @@ private fun buildTroubleshootingReport(entries: List<AppLogEntry>): String {
 
     return buildString {
         appendLine("==============================================")
-        appendLine("Video Downloader Diagnostics & System Report")
+        appendLine("Downloader links Diagnostics & System Report")
         appendLine("Generated: ${Instant.now()}")
         appendLine("==============================================")
         appendLine()

@@ -34,6 +34,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableLongStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -106,6 +107,7 @@ import com.localdownloader.viewmodel.MusicTrimViewModel
 import com.localdownloader.viewmodel.PlayerViewModel
 import com.localdownloader.viewmodel.UpdatesViewModel
 import com.localdownloader.ui.components.StartupUpdateDialog
+import com.localdownloader.ui.components.WelcomeTelegramDialog
 import com.localdownloader.ui.screens.UpdatesScreen
 import com.localdownloader.ui.screens.UpdateChangelogScreen
 import com.localdownloader.ui.screens.UpdateChangelogSections
@@ -115,6 +117,7 @@ import com.localdownloader.ui.screens.ProgressScreen
 import com.localdownloader.ui.screens.PlayerScreen
 import com.localdownloader.ui.screens.MusicPlayerScreen
 import com.localdownloader.ui.screens.SettingsScreen
+import com.localdownloader.ui.screens.StatisticsScreen
 
 @Composable
 fun DownloaderApp(
@@ -152,6 +155,7 @@ fun DownloaderApp(
     var pendingFolderBrowseTarget by remember { mutableStateOf<FolderBrowseTarget?>(null) }
     var showVideoPlayerSourceSheet by remember { mutableStateOf(false) }
     var showVideoGestureGuideSheet by remember { mutableStateOf(false) }
+    var showWelcomeDialog by rememberSaveable { mutableStateOf(true) }
 
     val convertFilePicker = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocument(),
@@ -658,6 +662,10 @@ fun DownloaderApp(
                     onQueueWhenWifiAvailable = formatViewModel::queueDownloadWhenWifiAvailable,
                     onAllowCellularDownloadsAndQueue = formatViewModel::allowCellularDownloadsAndQueue,
                     onDarkThemeChanged = formatViewModel::toggleDarkTheme,
+                    onShowBatchImportDialog = formatViewModel::setShowBatchImportDialog,
+                    onQueueBatchLinks = formatViewModel::queueBatchUrls,
+                    onSpeedLimitChanged = formatViewModel::setSpeedLimitKbps,
+                    onSegmentTimesChanged = formatViewModel::setSegmentTimes,
                     isDownloadButtonEnabled = !formatState.isQueueing && !formatState.isDownloadButtonDisabled,
                 )
             }
@@ -699,7 +707,18 @@ fun DownloaderApp(
                     onDeleteCompletedFromDevice = downloadViewModel::deleteAllCompletedMedia,
                     onDismissMessage = downloadViewModel::dismissMessage,
                     onOpenQueue = { navController.navigate(Routes.DownloadQueue) },
+                    onOpenStatistics = { navController.navigate(Routes.Statistics) },
+                    onOpenVault = { navController.navigate(Routes.Vault) },
+                    onOpenConvert = { navController.navigate(Routes.Convert) },
+                    onOpenCompress = { navController.navigate(Routes.Compress) },
+                    onOpenSettings = { navController.navigate(Routes.Settings) },
                     fileExists = fileUtils::managedFileExists,
+                )
+            }
+            composable(Routes.Statistics) {
+                StatisticsScreen(
+                    tasks = downloadState.tasks,
+                    onBack = { navController.popBackStack() },
                 )
             }
             composable(Routes.DownloadQueue) {
@@ -724,18 +743,11 @@ fun DownloaderApp(
             }
             composable(Routes.More) {
                 MoreScreen(
-                    onOpenQueue = { navController.navigate(Routes.DownloadQueue) },
-                    onOpenHistory = { navController.navigate(Routes.History) },
-                    onOpenCompress = { navController.navigate(Routes.Compress) },
-                    onOpenConvert = { navController.navigate(Routes.Convert) },
-                    onOpenVideo = { showVideoPlayerSourceSheet = true },
-                    onOpenMusic = { navController.navigate(Routes.Music) },
-                    onOpenYoutubeAccess = { navController.navigate(Routes.YoutubeAuth) },
-                    onOpenCookies = { navController.navigate(Routes.Cookies) },
-                    onOpenUpdates = { navController.navigate(Routes.Updates) },
-                    onOpenSettings = { navController.navigate(Routes.Settings) },
-                    onOpenHelp = { navController.navigate(Routes.Help) },
-                    onOpenVault = { navController.navigate(Routes.Vault) },
+                    currentLanguageTag = formatState.languageTag,
+                    onLanguageSelected = formatViewModel::onLanguageChanged,
+                    currentThemeMode = formatState.themeMode,
+                    currentAccentPreset = formatState.accentPreset,
+                    onOpenAppearance = { navController.navigate(Routes.SettingsAppearance) },
                 )
             }
             composable(Routes.YoutubeAuth) {
@@ -1225,17 +1237,11 @@ fun DownloaderApp(
             }
         }
 
-        updatesState.startupUpdatePrompt?.let { prompt ->
-            StartupUpdateDialog(
-                prompt = prompt,
-                onOpenUpdates = {
-                    updatesViewModel.dismissStartupUpdatePrompt(snoozeCurrentVersions = false)
-                    navController.navigate(Routes.Updates) {
-                        launchSingleTop = true
-                    }
-                },
-                onDismiss = { snoozeVersion ->
-                    updatesViewModel.dismissStartupUpdatePrompt(snoozeCurrentVersions = snoozeVersion)
+        if (showWelcomeDialog) {
+            WelcomeTelegramDialog(
+                onDismissRequest = {
+                    showWelcomeDialog = false
+                    updatesViewModel.dismissStartupUpdatePrompt(snoozeCurrentVersions = true)
                 },
             )
         }
@@ -1272,6 +1278,7 @@ object Routes {
     const val Player = AppLaunchRouter.ROUTE_PLAYER
     const val ExternalOpen = "external_open"
     const val Vault = "vault"
+    const val Statistics = "statistics"
 
     fun updateChangelog(section: String): String {
         return "updates/changelog/${android.net.Uri.encode(section)}"

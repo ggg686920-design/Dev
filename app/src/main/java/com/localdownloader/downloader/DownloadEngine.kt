@@ -51,6 +51,15 @@ class DownloadEngine @Inject constructor(
         if (options.forceFreshDownload) {
             args += "--no-continue"
         }
+        if (options.speedLimitKbps != null && options.speedLimitKbps > 0) {
+            args += listOf("--limit-rate", "${options.speedLimitKbps}K")
+        }
+        if (!options.segmentStartTime.isNullOrBlank() && !options.segmentEndTime.isNullOrBlank()) {
+            args += listOf("--download-sections", "*${options.segmentStartTime}-${options.segmentEndTime}")
+        }
+        if (options.overwriteExisting) {
+            args += "--force-overwrites"
+        }
         if (!options.extractorArgs.isNullOrBlank()) {
             args += listOf("--extractor-args", options.extractorArgs)
         }
